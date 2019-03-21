@@ -29,6 +29,7 @@ class Bacterium: SKSpriteNode, Enemies {
         let color = UIColor.red
         let size = defaultSize
         super.init(texture: texture, color: color, size: size)
+        self.name = "Bacterium"
         setup()
     }
     
