@@ -22,7 +22,7 @@ The project is ready for you to jump in and shake things up a bit!
 import UIKit
 import PlaygroundSupport
 
-let viewController = ViewController()
-PlaygroundPage.current.liveView = viewController
+let gameViewController = GameViewController()
+PlaygroundPage.current.liveView = gameViewController
 PlaygroundPage.current.needsIndefiniteExecution = true
 //#-end-hidden-code
