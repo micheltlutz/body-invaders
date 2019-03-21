@@ -41,8 +41,8 @@ public class GameViewController: UIViewController {
 //    }
     
     func presentsScene(){
-        let size = CGSize(width: 320, height: 568)
-//        let size = CGSize(width: view.frame.width, height: view.frame.height)
+//        let size = CGSize(width: 320, height: 568)
+        let size = CGSize(width: view.frame.width, height: view.frame.height)
         let scene = Scene1(size: size)
         scene.gameViewController = self
         scene.scaleMode = .aspectFill

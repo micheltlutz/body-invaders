@@ -18,38 +18,46 @@ class Scene1: SKScene {
     var playerCategory: UInt32 = 1
     var enemyCategory: UInt32 = 2
     var scoreCategory: UInt32 = 4
+    var scoreLabel: SKLabelNode!
     
     var timer: Timer!
     
     override init(size: CGSize) {
         super.init(size: size)
+//        backgroundColor = .blue
 //        anchorPoint = CGPoint(x: 0, y: 1.0)
         
 //        animationBackground = SKSpriteNode(color: UIColor.blue, size: size)
 //        animationBackground.anchorPoint = CGPoint(x: 0, y: 1.0)
 //        animationBackground.position = CGPoint(x: 0, y: 0)
 //        self.addChild(animationBackground)
-        
-        spawnEnemies()
     }
     
     override func didMove(to view: SKView) {
-        physicsWorld.contactDelegate = self
+//        physicsWorld.contactDelegate = self
+        addScore()
+        timer = Timer.scheduledTimer(withTimeInterval: 2.5, repeats: true, block: { (timer) in
+            self.spawnEnemies()
+        })
     }
     
     
     func spawnEnemies(){
-        let initialPosition = CGFloat(arc4random_uniform(132) + 74)
+        let initialPosition = CGFloat(arc4random_uniform(62) + 74)
 //        let enemyNumber = Int(arc4random_uniform(4) + 1)
 //        let enemyDistance = self.player.size.height * 2.5
         
         print(initialPosition)
+        print(size)
+        
         
         let enemy = Bacterium()
+        print(enemy.size)
         enemy.zPosition = 1
-//        enemy.position = CGPoint(x: size.width + enemy.size.width / 2,
+//        enemy.position = CGPoint(x: initialPosition + enemy.size.width / 2,
 //                              y: size.height - initialPosition + enemy.size.height / 2)
-        enemy.position = CGPoint(x: 100, y: 100)
+//        print(enemy.position)
+        enemy.position = CGPoint(x: initialPosition + enemy.size.width / 2 , y: -enemy.size.height)
         addChild(enemy)
     }
     
@@ -73,16 +81,29 @@ class Scene1: SKScene {
 //            player.zRotation = yVelocity
 //        }
         floatEnemies()
-        removeExcessEnemies()
+//        removeExcessEnemies()
     }
-    
+    func addScore(){
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.fontSize = 94
+        scoreLabel.text = "\(0)"
+        scoreLabel.zPosition = 5
+        scoreLabel.position = CGPoint(x: size.width / 2, y: size.height - 100)
+        scoreLabel.alpha = 0.8
+        addChild(scoreLabel)
+    }
     func floatEnemies() {
         for child in children {
-            let xOffset: CGFloat = CGFloat(arc4random_uniform(20)) - 10.0
-            let yOffset: CGFloat = 20.0
-            let newLocation = CGPoint(x: child.position.x + xOffset, y: child.position.y + yOffset)
-            let moveAction = SKAction.move(to: newLocation, duration: 0.2)
-            child.run(moveAction)
+            
+            if ((child as? Bacterium) != nil) {
+                let xOffset: CGFloat = CGFloat(arc4random_uniform(20)) - 10.0
+                let yOffset: CGFloat = 20.0
+                let newLocation = CGPoint(x: child.position.x + xOffset, y: child.position.y + yOffset)
+                let moveAction = SKAction.move(to: newLocation, duration: 0.2)
+                child.run(moveAction)
+            }
+            
+           
         }
     }
     
@@ -104,9 +125,7 @@ extension Scene1: SKPhysicsContactDelegate{
         
         print("DID BEGIN")
         
-        timer = Timer.scheduledTimer(withTimeInterval: 2.5, repeats: true, block: { (timer) in
-            self.spawnEnemies()
-        })
+        
         
 //        if gameStarted{
 //            if contact.bodyA.categoryBitMask == scoreCategory || contact.bodyB.categoryBitMask == scoreCategory{
