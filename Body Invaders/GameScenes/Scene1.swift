@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class Scene1: SKScene {
+public class Scene1: SKScene {
     weak var gameViewController: GameViewController?
     var gameArea: CGFloat = 410.0
     var velocity: Double = 100.0
@@ -22,7 +22,7 @@ class Scene1: SKScene {
     
     var timer: Timer!
     
-    override init(size: CGSize) {
+    override public init(size: CGSize) {
         super.init(size: size)
 //        backgroundColor = .blue
 //        anchorPoint = CGPoint(x: 0, y: 1.0)
@@ -33,7 +33,7 @@ class Scene1: SKScene {
 //        self.addChild(animationBackground)
     }
     
-    override func didMove(to view: SKView) {
+    override public func didMove(to view: SKView) {
 //        physicsWorld.contactDelegate = self
         addScore()
         timer = Timer.scheduledTimer(withTimeInterval: 2.5, repeats: true, block: { (timer) in
@@ -61,7 +61,7 @@ class Scene1: SKScene {
         addChild(enemy)
     }
     
-     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         print("Detect Touches")
         
@@ -75,7 +75,7 @@ class Scene1: SKScene {
         }
     }
     
-    override func update(_ currentTime: TimeInterval) {
+    override public func update(_ currentTime: TimeInterval) {
 //        if gameStarted {
 //            let yVelocity = player.physicsBody!.velocity.dy * 0.001 as CGFloat
 //            player.zRotation = yVelocity
@@ -115,13 +115,13 @@ class Scene1: SKScene {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension Scene1: SKPhysicsContactDelegate{
-    func didBegin(_ contact: SKPhysicsContact){
+    public func didBegin(_ contact: SKPhysicsContact){
         
         print("DID BEGIN")
         

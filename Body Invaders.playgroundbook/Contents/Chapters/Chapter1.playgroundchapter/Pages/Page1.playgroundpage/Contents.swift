@@ -20,6 +20,9 @@ The project is ready for you to jump in and shake things up a bit!
 */
 //#-hidden-code
 import UIKit
+import SpriteKit
+import GameplayKit
+import AVFoundation
 import PlaygroundSupport
 
 let gameViewController = GameViewController()
