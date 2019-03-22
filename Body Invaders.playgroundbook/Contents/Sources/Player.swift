@@ -11,5 +11,4 @@ import SpriteKit
 class Player {
     public static var category: UInt32 = 1
     var life: Double = 100
-    var score: Double = 9
 }

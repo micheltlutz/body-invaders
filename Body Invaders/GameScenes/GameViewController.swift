@@ -8,12 +8,12 @@
 
 import UIKit
 import SpriteKit
-import GameplayKit
-import AVFoundation
+//import GameplayKit
+//import AVFoundation
 
 public class GameViewController: UIViewController {
     var stage: SKView!
-    var musicPlayer: AVAudioPlayer!
+//    var musicPlayer: AVAudioPlayer!
     
     override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,9 +42,8 @@ public class GameViewController: UIViewController {
     
     func presentsScene(){
 //        let size = CGSize(width: 320, height: 568)
-        let size = CGSize(width: view.frame.width, height: view.frame.height)
-        let scene = Scene1(size: size)
-        scene.gameViewController = self
+//        let size = CGSize(width: view.frame.width, height: view.frame.height)
+        let scene = Scene1(size: view.bounds.size)
         scene.scaleMode = .aspectFill
         stage.presentScene(scene, transition: .doorsOpenVertical(withDuration: 0.5))
     }

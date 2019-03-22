@@ -7,52 +7,45 @@
 //
 
 import SpriteKit
-import GameplayKit
+import UIKit
+//import GameplayKit
 
 public class Scene1: SKScene {
-    weak var gameViewController: GameViewController?
     var gameArea: CGFloat = 410.0
     var velocity: Double = 100.0
     var gameFinished = false
     var gameStarted = false
-    var playerCategory: UInt32 = 1
-    var enemyCategory: UInt32 = 2
-    var scoreCategory: UInt32 = 4
+//    var playerCategory: UInt32 = 1
+//    var enemyCategory: UInt32 = 2
+//    var scoreCategory: UInt32 = 4
     var scoreLabel: SKLabelNode!
+    var lifeLabel: SKLabelNode!
+    var bloodstream: SKSpriteNode!
     let player = Player()
-    
     var timer: Timer!
+    var score: Double = 0 {
+        didSet {
+            scoreLabel.text = String(Int(score))
+        }
+    }
     
     override public init(size: CGSize) {
         super.init(size: size)
-        
-//        backgroundColor = .blue
-//        anchorPoint = CGPoint(x: 0, y: 1.0)
-        
-//        animationBackground = SKSpriteNode(color: UIColor.blue, size: size)
-//        animationBackground.anchorPoint = CGPoint(x: 0, y: 1.0)
-//        animationBackground.position = CGPoint(x: 0, y: 0)
-//        self.addChild(animationBackground)
     }
-    
+
     override public func didMove(to view: SKView) {
-//        physicsWorld.contactDelegate = self
+        addBackground()
         addScore()
+        addLife()
         timer = Timer.scheduledTimer(withTimeInterval: 2.5, repeats: true, block: { (timer) in
             self.spawnEnemies()
         })
     }
     
-    
     func spawnEnemies(){
         let initialPosition = CGFloat(arc4random_uniform(UInt32(Int(size.width - 80))) + 74)
-        print(initialPosition)
-        print(size)
         let enemy = Bacterium()
-
-
-        print(enemy.size)
-        enemy.zPosition = 1
+        enemy.zPosition = 2
         enemy.position = CGPoint(x: initialPosition - (enemy.size.width / 2), y: -enemy.size.height)
         addChild(enemy)
     }
@@ -61,11 +54,10 @@ public class Scene1: SKScene {
         for touch in touches {
             let location = touch.location(in: self)           // 1
             let touchedNode = nodes(at: location)
-
             if let node = touchedNode.first, let enemy = node as? Bacterium {
-                print("enemy.life: \(enemy.life)")
                 enemy.life = enemy.life - 2
                 if enemy.life <= 0 {
+                    score += enemy.points
                     enemy.removeFromParent()
                 }
             }
@@ -80,8 +72,17 @@ public class Scene1: SKScene {
         floatEnemies()
         removeExcessEnemies()
     }
+    
+    func addBackground() {
+        backgroundColor = UIColor(red: 146, green: 72, blue: 64, alpha: 1.0)
+        bloodstream = SKSpriteNode(imageNamed: "bloodstream")
+        bloodstream.position = CGPoint(x: size.width / 2, y: size.height / 2)
+        bloodstream.zPosition = 1
+        bloodstream.size = self.size
+        addChild(bloodstream)
+    }
 
-    func addScore(){
+    func addScore() {
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
         scoreLabel.fontSize = 94
         scoreLabel.text = "\(0)"
@@ -89,6 +90,16 @@ public class Scene1: SKScene {
         scoreLabel.position = CGPoint(x: size.width / 2, y: size.height - 100)
         scoreLabel.alpha = 0.8
         addChild(scoreLabel)
+    }
+    
+    func addLife() {
+        lifeLabel = SKLabelNode(fontNamed: "Chalkduster")
+        lifeLabel.fontSize = 50
+        lifeLabel.text = "\(Int(player.life))"
+        lifeLabel.zPosition = 5
+        lifeLabel.position = CGPoint(x: size.width * 0.2, y: size.height - 100)
+        lifeLabel.alpha = 0.8
+        addChild(lifeLabel)
     }
 
     func floatEnemies() {
@@ -105,35 +116,17 @@ public class Scene1: SKScene {
     
     func removeExcessEnemies() {
         for child in children {
-            if child.position.y > size.height {
-                print("Destruindo: \(child.name) y: \(child.position.y)")
-                child.removeFromParent()
+            if let enemy = child as? Bacterium {
+                if enemy.position.y > size.height {
+                    enemy.removeFromParent()
+                    player.life -= enemy.points
+                    lifeLabel.text = String(Int(player.life))
+                }
             }
         }
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension Scene1: SKPhysicsContactDelegate {
-    public func didBegin(_ contact: SKPhysicsContact){
-        
-        print("DID BEGIN")
-        
-        
-        
-//        if gameStarted{
-//            if contact.bodyA.categoryBitMask == scoreCategory || contact.bodyB.categoryBitMask == scoreCategory{
-//                score += 1
-//                scoreLabel.text = "\(score)"
-//                run(scoreSound)
-//            } else if contact.bodyA.categoryBitMask == enemyCategory || contact.bodyB.categoryBitMask == enemyCategory{
-//                print("Game Over")
-//                gameOver()
-//                run(gameOverSound)
-//            }
-//        }
     }
 }

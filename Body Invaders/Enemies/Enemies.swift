@@ -14,15 +14,17 @@ protocol Enemies {
     var life: Double { get set }
     var velocity: Double { get set }
     var avatar: String { get set }
+    var points: Double { get set }
 }
 
 class Bacterium: SKSpriteNode, Enemies {
     var enemyName: String = "Bacterium"
     var life: Double = 7
     var velocity: Double = 50
-    var avatar: String = "backterium"
+    var avatar: String = "backterium_d"
     let defaultSize: CGSize = CGSize(width: 100.0, height: 100.0)
     var category: UInt32 = 2
+    var points: Double = 1
     
     init() {
         let texture = SKTexture(imageNamed: self.avatar)
