@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D01703592246EAD500C53DF8 /* RedBloodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01703582246EAD500C53DF8 /* RedBloodCell.swift */; };
+		D017035B2247CE5500C53DF8 /* Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D017035A2247CE5500C53DF8 /* Heart.swift */; };
 		D03C8B632241CB6500409882 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C8B622241CB6500409882 /* AppDelegate.swift */; };
 		D03C8B682241CB6500409882 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03C8B662241CB6500409882 /* Main.storyboard */; };
 		D03C8B6A2241CB6600409882 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03C8B692241CB6600409882 /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D01703582246EAD500C53DF8 /* RedBloodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedBloodCell.swift; sourceTree = "<group>"; };
+		D017035A2247CE5500C53DF8 /* Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heart.swift; sourceTree = "<group>"; };
 		D03C8B5F2241CB6500409882 /* Body Invaders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Body Invaders.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03C8B622241CB6500409882 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D03C8B672241CB6500409882 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,6 +83,8 @@
 			children = (
 				D09DE0F92242FF820091CEA7 /* Player.swift */,
 				D09DE0FB2242FF8F0091CEA7 /* Weapon.swift */,
+				D01703582246EAD500C53DF8 /* RedBloodCell.swift */,
+				D017035A2247CE5500C53DF8 /* Heart.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -195,6 +201,8 @@
 			files = (
 				D09DE1052243076D0091CEA7 /* GameViewController.swift in Sources */,
 				D09DE0FE2243055F0091CEA7 /* Enemies.swift in Sources */,
+				D017035B2247CE5500C53DF8 /* Heart.swift in Sources */,
+				D01703592246EAD500C53DF8 /* RedBloodCell.swift in Sources */,
 				D09DE1032243066D0091CEA7 /* Scene1.swift in Sources */,
 				D09DE0FC2242FF8F0091CEA7 /* Weapon.swift in Sources */,
 				D09DE0FA2242FF820091CEA7 /* Player.swift in Sources */,

@@ -18,16 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bloodstream" translatesAutoresizingMaskIntoConstraints="NO" id="Gj0-MU-u2j">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="1J7-H0-A11">
+                                <rect key="frame" x="67.5" y="213.5" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Vih-0w-rAX"/>
+                                    <constraint firstAttribute="height" constant="240" id="uBU-2R-FAP"/>
+                                </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.81176470588235294" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Gj0-MU-u2j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3EI-Ei-NZP"/>
-                            <constraint firstItem="Gj0-MU-u2j" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="GUO-uZ-GJM"/>
-                            <constraint firstItem="Gj0-MU-u2j" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="lfY-wu-Dt6"/>
-                            <constraint firstItem="Gj0-MU-u2j" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="nbP-En-hWv"/>
+                            <constraint firstItem="1J7-H0-A11" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="L3v-ou-UFH"/>
+                            <constraint firstItem="1J7-H0-A11" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="rfC-7h-0so"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -38,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bloodstream" width="683" height="911"/>
+        <image name="Icon.png" width="400" height="300"/>
     </resources>
 </document>
