@@ -9,22 +9,22 @@
 import Foundation
 import SpriteKit
 
-protocol Weapon {
+public protocol Weapon {
     var weaponName: String { get set }
     var power: Double { get set }
     var special: Bool { get set }
     var avatar: String { get set }
 }
 
-class Macrophages: SKSpriteNode, Weapon {
-    var weaponName: String = "Macrophages"
-    var power: Double = 2
-    var special: Bool = false
-    var avatar: String = ""
+public class Macrophages: SKSpriteNode, Weapon {
+    public var weaponName: String = "Macrophages"
+    public var power: Double = 2
+    public var special: Bool = false
+    public var avatar: String = ""
     let defaultSize: CGSize = CGSize(width: 80.0, height: 80.0)
     private var animationFrames: [SKTexture] = []
     
-    init() {
+    public init() {
         let texture = SKTexture(imageNamed: "Macrophage_0")
         let color = UIColor.red
         let size = defaultSize
@@ -34,7 +34,7 @@ class Macrophages: SKSpriteNode, Weapon {
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -54,15 +54,15 @@ class Macrophages: SKSpriteNode, Weapon {
     }
 }
 
-class Lymphocytes: SKSpriteNode, Weapon {
-    var weaponName: String = "Lymphocyte"
-    var power: Double = 10
-    var special: Bool = false
-    var avatar: String = ""
+public class Lymphocytes: SKSpriteNode, Weapon {
+    public var weaponName: String = "Lymphocyte"
+    public var power: Double = 10
+    public var special: Bool = false
+    public var avatar: String = ""
     let defaultSize: CGSize = CGSize(width: 80.0, height: 80.0)
     private var animationFrames: [SKTexture] = []
     
-    init() {
+    public init() {
         let texture = SKTexture(imageNamed: "Lymphocyte_0")
         let color = UIColor.clear
         let size = defaultSize
@@ -71,7 +71,7 @@ class Lymphocytes: SKSpriteNode, Weapon {
         setup()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

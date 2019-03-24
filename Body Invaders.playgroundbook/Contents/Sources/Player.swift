@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class Player {
+public class Player {
     public static var category: UInt32 = 1
     var life: Double = 100
 }
